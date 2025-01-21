@@ -1,0 +1,12 @@
+@import '../../styles/mixins.scss';
+
+.button-primary {
+    @include text-preset-4-bold;
+    background-color: $grey-900;
+    color: white;
+    border-radius: 0.8rem;
+
+    &:hover {
+        background-color: $grey-500;
+    }
+}
