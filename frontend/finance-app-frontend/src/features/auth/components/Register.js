@@ -1,10 +1,44 @@
-import ButtonPrimary from '../../reusable components/buttons/ButtonPrimary';
+import React, { useState } from 'react';
 import './Register.scss';
-import React from 'react';
+import ButtonPrimary from '../../reusable components/buttons/ButtonPrimary';
+import { useDispatch } from 'react-redux';
+import { register } from '../redux/authActions';
+
+
 
 function Register() {
-    const handleClick = () => {
-        console.log('Register button clicked');
+    const [formData, setFormData] = useState({ name: '', email: '', password: ''});
+    const [errors, setErrors] = useState({});
+    const dispatch = useDispatch();
+
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const validationErrors = {};
+
+        if (!formData.name) {
+            validationErrors.name = 'Name is required';
+        }
+
+        if (!formData.email) {
+            validationErrors.email = 'Email is required';
+        } 
+        else if (!validateEmail(formData.email)) {   
+            validationErrors.email = 'Email is invalid';
+        }
+
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+
+        setErrors({}); // Clear the errors
+        dispatch(register(formData)); // Dispatch the register action with the form data
     };
     return (
         <div className="register">
@@ -12,12 +46,27 @@ function Register() {
                 <h1>Sign Up</h1>
                 <form>
                     <label htmlFor='name-input'>Name</label>
-                    <input className='name-input' type="text"/>
+                    <input
+                     className='name-input'
+                     type="text"
+                     value={formData.name}
+                     onChange={(e) => setFormData({...formData, name: e.target.value})}
+                     />
                     <label htmlFor='email-input'>Email</label>
-                    <input className='email-input' type="text"/>
+                    <input
+                     className='email-input'
+                     type="text"
+                     value={formData.email}
+                     onChange={(e) => setFormData({...formData, email: e.target.value})}
+                     />
                     <label htmlFor='createpassword-input'>Create Password</label>
-                    <input className='createpassword-input' type="password"/>
-                    <ButtonPrimary text='Create Account' onClick={handleClick}/>
+                    <input
+                     className='createpassword-input'
+                     type="password"
+                     value={formData.password}
+                     onChange={(e) => setFormData({...formData, password: e.target.value})}
+                     />
+                    <ButtonPrimary text='Create Account' onClick={handleSubmit}/>
                 </form>
                 <p>Already have an account? <span>Login</span></p>
             </div>
