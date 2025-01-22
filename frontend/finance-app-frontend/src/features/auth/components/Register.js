@@ -49,30 +49,28 @@ function Register() {
             <div className="register__container">
                 <h1>Sign Up</h1>
                 <form>
-                    <label htmlFor='name-input'>Name</label>
+                    <label htmlFor='name-input'>Name{errors.name && <span className='error'>{errors.name}</span>}</label>
                     <input
                      className='name-input'
                      type="text"
                      value={formData.name}
                      onChange={(e) => setFormData({...formData, name: e.target.value})}
                      />
-                     {errors.name && <p className='error'>{errors.name}</p>}
-                    <label htmlFor='email-input'>Email</label>
+                     
+                    <label htmlFor='email-input'>Email{errors.name && <span className='error'>{errors.email}</span>}</label>
                     <input
                      className='email-input'
                      type="text"
                      value={formData.email}
                      onChange={(e) => setFormData({...formData, email: e.target.value})}
                      />
-                     {errors.email && <p className='error'>{errors.email}</p>}
-                    <label htmlFor='createpassword-input'>Create Password</label>
+                    <label htmlFor='createpassword-input'>Create Password{errors.name && <span className='error'>{errors.password}</span>}</label>
                     <input
                      className='createpassword-input'
                      type="password"
                      value={formData.password}
                      onChange={(e) => setFormData({...formData, password: e.target.value})}
                      />
-                     {errors.password && <p className='error'>{errors.password}</p>}
                     <ButtonPrimary text='Create Account' onClick={handleSubmit}/>
                 </form>
                 <p>Already have an account? <span>Login</span></p>

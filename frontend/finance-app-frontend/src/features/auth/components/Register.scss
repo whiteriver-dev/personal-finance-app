@@ -21,6 +21,8 @@
 
     label {
         @include text-preset-5-bold;
+        display: flex;
+        justify-content: space-between;
         color: $grey-500;
         margin: 0;
         margin-bottom: 0.4rem;
@@ -64,4 +66,8 @@
 
 .createpassword-input {
     margin-bottom: 3.2rem;
+}
+
+.error {
+    color: $red;
 }
