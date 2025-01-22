@@ -1,4 +1,4 @@
-import { loginApi, registerApi } from '../../services/api';
+import { loginApi, registerApi } from '../../../services/api';
 
 export const register = (userData) => async (dispatch) => {
     try {

@@ -25,6 +25,10 @@ function Register() {
             validationErrors.name = 'Name is required';
         }
 
+        if (!formData.password) {
+            validationErrors.password = 'Password is required';
+        }
+
         if (!formData.email) {
             validationErrors.email = 'Email is required';
         } 
@@ -52,6 +56,7 @@ function Register() {
                      value={formData.name}
                      onChange={(e) => setFormData({...formData, name: e.target.value})}
                      />
+                     {errors.name && <p className='error'>{errors.name}</p>}
                     <label htmlFor='email-input'>Email</label>
                     <input
                      className='email-input'
@@ -59,6 +64,7 @@ function Register() {
                      value={formData.email}
                      onChange={(e) => setFormData({...formData, email: e.target.value})}
                      />
+                     {errors.email && <p className='error'>{errors.email}</p>}
                     <label htmlFor='createpassword-input'>Create Password</label>
                     <input
                      className='createpassword-input'
@@ -66,6 +72,7 @@ function Register() {
                      value={formData.password}
                      onChange={(e) => setFormData({...formData, password: e.target.value})}
                      />
+                     {errors.password && <p className='error'>{errors.password}</p>}
                     <ButtonPrimary text='Create Account' onClick={handleSubmit}/>
                 </form>
                 <p>Already have an account? <span>Login</span></p>
