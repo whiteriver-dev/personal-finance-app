@@ -51,7 +51,7 @@ function Register() {
                 <form>
                     <label htmlFor='name-input'>Name{errors.name && <span className='error'>{errors.name}</span>}</label>
                     <input
-                     className='name-input'
+                     className={`name-input ${errors.name ? 'error' : ''}`}
                      type="text"
                      value={formData.name}
                      onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -59,14 +59,14 @@ function Register() {
                      
                     <label htmlFor='email-input'>Email{errors.name && <span className='error'>{errors.email}</span>}</label>
                     <input
-                     className='email-input'
+                     className={`email-input ${errors.email ? 'error' : ''}`}
                      type="text"
                      value={formData.email}
                      onChange={(e) => setFormData({...formData, email: e.target.value})}
                      />
                     <label htmlFor='createpassword-input'>Create Password{errors.name && <span className='error'>{errors.password}</span>}</label>
                     <input
-                     className='createpassword-input'
+                     className={`createpassword-input ${errors.password ? 'error' : ''}`}
                      type="password"
                      value={formData.password}
                      onChange={(e) => setFormData({...formData, password: e.target.value})}
