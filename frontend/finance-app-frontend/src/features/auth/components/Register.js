@@ -16,6 +16,11 @@ function Register() {
         return emailRegex.test(email);
     }
 
+    const validateName = (name) => {
+        const nameRegex = /^[A-Za-z\s]+$/; // Allows only letters and spaces
+        return nameRegex.test(name);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -23,6 +28,9 @@ function Register() {
 
         if (!formData.name) {
             validationErrors.name = 'Name is required';
+        }
+        else if (!validateName(formData.name)) {
+            validationErrors.name = 'Name should contain letters only';
         }
 
         if (!formData.password) {
@@ -57,14 +65,14 @@ function Register() {
                      onChange={(e) => setFormData({...formData, name: e.target.value})}
                      />
                      
-                    <label htmlFor='email-input'>Email{errors.name && <span className='error'>{errors.email}</span>}</label>
+                    <label htmlFor='email-input'>Email{errors.email && <span className='error'>{errors.email}</span>}</label>
                     <input
                      className={`email-input ${errors.email ? 'error' : ''}`}
                      type="text"
                      value={formData.email}
                      onChange={(e) => setFormData({...formData, email: e.target.value})}
                      />
-                    <label htmlFor='createpassword-input'>Create Password{errors.name && <span className='error'>{errors.password}</span>}</label>
+                    <label htmlFor='createpassword-input'>Create Password{errors.password && <span className='error'>{errors.password}</span>}</label>
                     <input
                      className={`createpassword-input ${errors.password ? 'error' : ''}`}
                      type="password"
