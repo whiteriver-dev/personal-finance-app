@@ -21,7 +21,6 @@ def register(request):
             return JsonResponse({'message': 'Email already exists.'}, status=400)
         
         user = CustomUser.objects.create(
-            username=email,
             name=name,
             email=email,
             password=make_password(password)

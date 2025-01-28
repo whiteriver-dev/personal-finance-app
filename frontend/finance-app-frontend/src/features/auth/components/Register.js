@@ -21,7 +21,7 @@ function Register() {
         return nameRegex.test(name);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const validationErrors = {};
@@ -51,6 +51,7 @@ function Register() {
 
         setErrors({}); // Clear the errors
         dispatch(register(formData)); // Dispatch the register action with the form data
+
     };
     return (
         <div className="register">
