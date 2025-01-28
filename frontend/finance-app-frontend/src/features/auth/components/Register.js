@@ -3,12 +3,14 @@ import './Register.scss';
 import ButtonPrimary from '../../reusable components/buttons/ButtonPrimary';
 import { useDispatch } from 'react-redux';
 import { register } from '../redux/authActions';
+import { PulseLoader } from 'react-spinners';
 
 
 
 function Register() {
     const [formData, setFormData] = useState({ name: '', email: '', password: ''});
     const [errors, setErrors] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
 
     const validateEmail = (email) => {
@@ -50,9 +52,18 @@ function Register() {
         }
 
         setErrors({}); // Clear the errors
-        dispatch(register(formData)); // Dispatch the register action with the form data
+        setIsLoading(true); // Set the loading state to true
+        try {         // Dispatch the register action, and await its result
+            await dispatch(register(formData));
 
+        } catch (error) {
+            console.error('Registration failed:', error);
+        } finally {
+            setIsLoading(false); // Reset loading state after dispatch completes
+        }
     };
+
+
     return (
         <div className="register">
             <div className="register__container">
@@ -80,7 +91,15 @@ function Register() {
                      value={formData.password}
                      onChange={(e) => setFormData({...formData, password: e.target.value})}
                      />
-                    <ButtonPrimary text='Create Account' onClick={handleSubmit}/>
+                    <ButtonPrimary
+                        text={
+                            isLoading ? (
+                            <PulseLoader color="white" size={6}/>
+                            ) : (
+                                'Register'
+                            )
+                        } 
+                        onClick={handleSubmit}/>
                 </form>
                 <p>Already have an account? <span>Login</span></p>
             </div>
