@@ -29,8 +29,11 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+AUTH_USER_MODEL = 'userauth.CustomUser'
+
 INSTALLED_APPS = [
     'personalfinance',
+    'userauth',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
