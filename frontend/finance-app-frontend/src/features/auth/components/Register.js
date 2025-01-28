@@ -99,7 +99,8 @@ function Register() {
                                 'Register'
                             )
                         } 
-                        onClick={handleSubmit}/>
+                        onClick={handleSubmit}
+                        disabled={isLoading}/>
                 </form>
                 <p>Already have an account? <span>Login</span></p>
             </div>
