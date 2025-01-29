@@ -1,0 +1,27 @@
+@import '../../styles/_mixins.scss';
+
+h1 {
+    @include text-preset-1;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+p {
+    @include text-preset-3;
+    color: $grey-500;
+    text-align: center;
+    margin-bottom: 3.2rem;
+
+}
+
+.register-redirect {
+    padding: 3.2rem;
+    border-radius: 1.2rem;
+    min-width: 34.3rem;
+    max-width: 49.6rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

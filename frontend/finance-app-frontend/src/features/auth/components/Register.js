@@ -52,7 +52,7 @@ function Register() {
         }
 
         setErrors({}); // Clear the errors
-        setIsLoading(true); // Set the loading state to true
+        setIsLoading(true); 
         try {         // Dispatch the register action, and await its result
             await dispatch(register(formData));
 

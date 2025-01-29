@@ -1,10 +1,10 @@
-import Register from './features/auth/components/Register';
+import Login from './features/auth/components/Login';
 import './App.scss';
 
 function App() {
   return (
     <div>
-      <Register/>
+      <Login/>
     </div>
   );
 }
