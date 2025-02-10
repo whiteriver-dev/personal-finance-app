@@ -7,5 +7,5 @@ export const registerApi = async (userData) => {
 }
 
 export const loginApi = async (credentials) => {
-    return axios.post(`${API_URL}/login`, credentials); // POST request to Login endpoint
+    return axios.post(`http://127.0.0.1:8000/api/auth/login/`, credentials); // POST request to Login endpoint
 }

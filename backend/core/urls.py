@@ -21,6 +21,6 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),  # Django admin panel
-    path('api/', include('api.urls')),  # Will include URLs from the api app (you'll create this soon)
+    path('api/', include('api.urls')),  # Will include URLs from the api app
     path('api/auth/', include('userauth.urls')),  # User authentication URLs
 ]

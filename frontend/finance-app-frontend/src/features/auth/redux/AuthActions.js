@@ -20,6 +20,6 @@ export const login = (credentials) => async (dispatch) => {
             type: 'LOGIN_SUCCESS',
             payload: response.data })
     } catch (error) {
-        console.log(error);
+        dispatch({ type: 'LOGIN_FAILURE', payload: error });
     }
 }
