@@ -13,6 +13,7 @@ function Login() {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('handleSubmit');
         setError({}); // Clear the errors
         setIsLoading(true); 
 
@@ -22,7 +23,7 @@ function Login() {
             window.location.href = "/register";// Redirect to the dashboard
 
             console.log('Login successful');
-        } catch (error) {
+        } catch (err) {
             setError(error);
             console.error('Login failed:', error);
         } finally {
@@ -56,7 +57,7 @@ function Login() {
                                 'Login'
                             )
                         } 
-                        onClick={handleSubmit}
+                        type="submit"
                         disabled={isLoading}/>
                 </form>
             </div>
